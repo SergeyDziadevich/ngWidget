@@ -1,0 +1,57 @@
+<div class="dialog">
+  <div class="dialog-header">
+    <h2>Items selection dialog</h2>
+    <div class="dialog-close" (click)="dialogClose()">x</div>
+  </div>
+
+  <div class="filter-item">
+    <div class="search">
+      <label>Search</label>
+      <input type="text">
+    </div>
+    <div class="filter">
+      <label>Filter</label>
+      <select>
+        <option>without filter</option>
+        <option>Number > 10</option>
+        <option>Number > 100</option>
+        <option>Number > 200</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="list-items">
+    <div *ngFor="let item of items">
+      <label>
+        <input type="checkbox" value="{{item.id}}" (change)="onCheck($event)">
+        {{item.name}} {{item.id}}
+      </label>
+    </div>
+  </div>
+
+  <div>
+    Selected items at the moment
+  </div>
+
+  <div class="selected-items">
+    <ul>
+      <li *ngFor="let item of currentSelectItems" class="item">
+        <div>
+          {{item.name}}
+          <span class="badge">{{item.id}}</span>
+        </div>
+        <button class="delete" title="delete item" (click)="delete(item)">x</button>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <button class="btn" (click)="saveSelectItem()">
+      Save
+    </button>
+    <button class="btn" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+
+</div>

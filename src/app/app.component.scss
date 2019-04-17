@@ -1,0 +1,41 @@
+.btn-change-selection{
+  border: none;
+  background: #9ca85a;
+  color:#474841;
+  padding: 10px 15px;
+  cursor: pointer;
+  &:hover{
+    background: #808c46;
+  }
+}
+
+.selected-items{
+  width: 600px;
+  margin: 0 auto;
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.item{
+  background: #000;
+  color: #fff;
+  width: 150px;
+  margin: 10px;
+  //display: inline-block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  button{
+    background: #000;
+    border: none;
+    color: #fff;
+    border-left:1px solid #fff;
+    margin: 3px 0;
+    text-transform: uppercase;
+    // width: 20px;
+    float: right;
+    cursor: pointer;
+  }
+}

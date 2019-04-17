@@ -1,0 +1,22 @@
+<h2>
+  Items selection
+</h2>
+
+<div class="count-selected-items">
+  You currently have {{items.length}} items selected
+</div>
+
+<div class="selected-items">
+  <ul>
+    <li *ngFor="let item of items" class="item">
+      <div>
+        {{item.name}}
+        <span class="badge">{{item.id}}</span>
+      </div>
+      <button class="delete" title="delete item" (click)="delete(item)">x</button>
+    </li>
+  </ul>
+</div>
+
+
+

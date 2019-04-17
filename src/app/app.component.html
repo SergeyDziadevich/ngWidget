@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div style="text-align:center">
+  <h1>
+ <!--   {{ title }} -->
+  </h1>
+
+  <app-select-items></app-select-items>
+
+  <button class="btn btn-change-selection" (click)="showSelection()">Change my selection</button>
+
+  <div *ngIf="visibleSelection">
+    <app-selection (onClose)="onClose($event)"></app-selection>
+  </div>
+
+</div>
+
