@@ -37,22 +37,27 @@ export class SelectionComponent implements OnInit {
 
   onCheck(e) {
    // console.log(`${e.target.value}`);
-    this.currentSelectItems.push({ id: e.target.value, name: 'Item' });
-  // this.selectItemService.selectedItems.push({ id: e.target.value, name: 'Item' });
+    this.currentSelectItems.push({ id: e.target.value, title: 'Item', selected: true });
+  // this.selectItemService.selectedItems.push({ id: e.target.value, title: 'Item' });
   }
 
-  saveSelectItem() {
-    this.selectItemService.selectedItems.length = 0;
-
-    this.currentSelectItems.map((item) => {
-      this.selectItemService.selectedItems.push(item);
-    });
-   //  this.selectItemService.selectedItems = Array.from(this.currentSelectItems);
-   //  this.selectItemService.selectedItems = this.currentSelectItems.slice();
-  }
+  // saveSelectItem() {
+  //   this.selectItemService.selectedItems.length = 0;
+  //
+  //   this.currentSelectItems.map((item) => {
+  //     this.selectItemService.selectedItems.push(item);
+  //   });
+  //  //  this.selectItemService.selectedItems = Array.from(this.currentSelectItems);
+  //  //  this.selectItemService.selectedItems = this.currentSelectItems.slice();
+  // }
 
   cancel() {
     this.onClose.emit(false);
+  }
+
+  getSelectedItem() {
+    const selected = this.items.filter(c => c.selected);
+    console.log(selected);
   }
 }
 

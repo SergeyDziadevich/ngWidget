@@ -11,8 +11,8 @@ import { ITEMS } from './mock-items';
 export class SelectItemService {
 
   selectedItems: Item[] = [
-    {id: 2, name: 'Item'},
-    {id: 3, name: 'Item'},
+    {id: 2, title: 'Item', selected: true },
+    {id: 3, title: 'Item', selected: true},
   ];
 
   constructor() { }

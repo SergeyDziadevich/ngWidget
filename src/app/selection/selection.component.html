@@ -21,12 +21,19 @@
   </div>
 
   <div class="list-items">
-    <div *ngFor="let item of items">
-      <label>
-        <input type="checkbox" value="{{item.id}}" (change)="onCheck($event)">
-        {{item.name}} {{item.id}}
-      </label>
-    </div>
+    <form #f="ngForm">
+      <div *ngFor="let item of items">
+        <label>
+          <input type="checkbox"
+                 [ngModelOptions]="{standalone: true}"
+                 [(ngModel)]="item.selected"
+                 value="{{item.id}}"
+                 (change)="onCheck($event)">
+          {{item.title}} {{item.id}}
+        </label>
+      </div>
+
+    </form>
   </div>
 
   <div>
@@ -37,7 +44,7 @@
     <ul>
       <li *ngFor="let item of currentSelectItems" class="item">
         <div>
-          {{item.name}}
+          {{item.title}}
           <span class="badge">{{item.id}}</span>
         </div>
         <button class="delete" title="delete item" (click)="delete(item)">x</button>
@@ -46,12 +53,13 @@
   </div>
 
   <div>
-    <button class="btn" (click)="saveSelectItem()">
+    <button class="btn"(click)="getSelectedItem()">
       Save
     </button>
     <button class="btn" (click)="cancel()">
       Cancel
     </button>
   </div>
+
 
 </div>
