@@ -41,7 +41,7 @@ export class SelectionComponent implements OnInit {
       this.currentSelectItems.push({ id: e.target.value, title: 'Item', selected: true });
       console.log(this.currentSelectItems);
     } else {
-        const ind = this.currentSelectItems.findIndex(value => value === e.target.value);
+        const ind = this.currentSelectItems.findIndex(value => value.id === e.target.value);
         console.log(this.currentSelectItems);
         console.log(ind);
         this.currentSelectItems.splice(ind, 1);
