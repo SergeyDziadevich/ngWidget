@@ -28,6 +28,12 @@ export class SelectionComponent implements OnInit {
 
   delete(item) {
     this.currentSelectItems = this.currentSelectItems.filter(h => h !== item);
+
+   this.items[item.id].selected = false;
+
+
+    console.log(this.items);
+
     this.selectItemService.delete(item);
   }
 
@@ -65,6 +71,8 @@ export class SelectionComponent implements OnInit {
   getSelectedItem() {
     const selected = this.items.filter(c => c.selected);
     console.log(selected);
+
+    this.onClose.emit(false);
   }
 }
 
