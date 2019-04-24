@@ -18,6 +18,7 @@ export class SelectionComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
+    this.currentSelectItems = this.items.filter(h => h.selected === true);
   }
 
   getItems(): void {
@@ -26,7 +27,7 @@ export class SelectionComponent implements OnInit {
   }
 
   delete(item) {
-    this.items = this.items.filter(h => h !== item);
+    this.currentSelectItems = this.currentSelectItems.filter(h => h !== item);
     this.selectItemService.delete(item);
   }
 
@@ -39,14 +40,10 @@ export class SelectionComponent implements OnInit {
     // console.log(`${e.target.checked}`);
     if (e.target.checked) {
       this.currentSelectItems.push({ id: e.target.value, title: 'Item', selected: true });
-      console.log(this.currentSelectItems);
     } else {
         const ind = this.currentSelectItems.findIndex(value => value.id === e.target.value);
-        console.log(this.currentSelectItems);
-        console.log(ind);
         this.currentSelectItems.splice(ind, 1);
     }
-
 
   // this.selectItemService.selectedItems.push({ id: e.target.value, title: 'Item' });
   }

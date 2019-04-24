@@ -25,10 +25,10 @@
       <div *ngFor="let item of items">
         <label>
           <input type="checkbox"
-                 [ngModelOptions]="{standalone: true}"
-                 [(ngModel)]="item.selected"
-                 value="{{item.id}}"
-                 (change)="onCheck($event)">
+            [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="item.selected"
+            value="{{item.id}}"
+            (change)="onCheck($event)">
           {{item.title}} {{item.id}}
         </label>
       </div>
