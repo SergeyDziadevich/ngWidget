@@ -1,12 +1,36 @@
 .dialog{
   background:#3f3f3f;
-  width: 600px;
+  width: 490px;
   margin: 30px auto;
-  padding: 5px 20px;
+  padding: 5px 25px 20px;
   position: relative;
 
+  &-header{
+    h2{
+      font-size: 14px;
+      font-weight: 400;
+      text-align: left;
+      color:#fff;
+    }
+  }
   .filter-item{
     display: flex;
+    margin: 15px 0 20px 0;
+    .search{
+      margin: 0 25px 0 0;
+    }
+    label{
+      color: #fff;
+      margin: 0 15px 0 0;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    input{
+      height: 20px;
+    }
+    select{
+      height: 26px;
+    }
   }
   &-close{
     color: #fff;
@@ -19,16 +43,26 @@
 .list-items{
   background: #000;
   height: 200px;
-  padding: 20px;
+  padding: 15px 20px;
   overflow: auto;
   label{
     color: #fff;
     cursor: pointer;
+    font-size: 12px;
+    line-height: 10px;
+    input{
+      cursor: pointer;
+      margin: 4px 9px 0 0;
+      float: left;
+    }
+  }
+  div{
+    margin: 0 0 7px 0;
   }
 }
 
 .selected-items{
-  width: 600px;
+  width: 540px;
   margin: 0 auto;
   ul{
     display: flex;
@@ -38,36 +72,44 @@
 .item{
   background: #000;
   color: #fff;
-  width: 150px;
-  margin: 10px;
-  //display: inline-block;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 120px;
+  margin: 0 15px 15px 0;
+  padding: 0 0 0 15px;
+  position: relative;
+  line-height: 30px;
+  height: 30px;
+  list-style: none;
+  font-size: 12px;
 
   button{
     background: #000;
     border: none;
     color: #fff;
     border-left:1px solid #fff;
-    margin: 3px 0;
-    text-transform: uppercase;
-    // width: 20px;
-    float: right;
     cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 4px;
+    line-height: 13px;
+    padding: 4px 10px 4px;
   }
 }
 
 .btn{
-  background: #9ca85a;
+  background: #778c03;
   color: #fff;
   border: none;
   width: 100px;
   text-align: left;
-  padding: 4px 12px;
+  padding: 6px 12px;
   margin: 0 15px 0 0;
   cursor: pointer;
   &:hover{
-    background: #808c46;
+    background: #9ca85a;
   }
+}
+.current-selection-title{
+  color: #fff;
+  font-size: 12px;
+  margin: 20px 0 10px;
 }

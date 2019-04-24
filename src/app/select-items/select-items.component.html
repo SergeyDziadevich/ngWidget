@@ -10,7 +10,7 @@
   <ul>
     <li *ngFor="let item of items" class="item">
       <div>
-        {{item.name}}
+        {{item.title}}
         <span class="badge">{{item.id}}</span>
       </div>
       <button class="delete" title="delete item" (click)="delete(item)">x</button>

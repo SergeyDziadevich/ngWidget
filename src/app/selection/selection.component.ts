@@ -36,8 +36,18 @@ export class SelectionComponent implements OnInit {
   }
 
   onCheck(e) {
-   // console.log(`${e.target.value}`);
-    this.currentSelectItems.push({ id: e.target.value, title: 'Item', selected: true });
+    // console.log(`${e.target.checked}`);
+    if (e.target.checked) {
+      this.currentSelectItems.push({ id: e.target.value, title: 'Item', selected: true });
+      console.log(this.currentSelectItems);
+    } else {
+        const ind = this.currentSelectItems.findIndex(value => value === e.target.value);
+        console.log(this.currentSelectItems);
+        console.log(ind);
+        this.currentSelectItems.splice(ind, 1);
+    }
+
+
   // this.selectItemService.selectedItems.push({ id: e.target.value, title: 'Item' });
   }
 
