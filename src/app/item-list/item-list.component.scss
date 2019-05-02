@@ -1,0 +1,9 @@
+.selected-items{
+  text-align: left;
+  margin: 15px 0 15px 0;
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

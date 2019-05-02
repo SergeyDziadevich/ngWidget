@@ -1,17 +1,6 @@
-<h2>
-  Items selection
-</h2>
-
-<div class="count-selected-items">
-  You currently have {{currentSelectItems.length}} items selected
-</div>
-
-<app-item-list
-  [items]="currentSelectItems"
-></app-item-list>
-<!--
 <div class="selected-items">
   <ul>
+    <!--
     <li *ngFor="let item of currentSelectItems" class="item">
       <div>
         {{item.title}}
@@ -19,8 +8,11 @@
       </div>
       <button class="delete" title="delete item" (click)="deleteSelectItems(item)">x</button>
     </li>
+    -->
+    <app-item
+      *ngFor="let item of items"
+      [item]="item"
+    >
+    </app-item>
   </ul>
 </div>
--->
-
-
