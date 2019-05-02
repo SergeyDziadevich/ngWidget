@@ -3,17 +3,16 @@
 </h2>
 
 <div class="count-selected-items">
-  You currently have {{items.length}} items selected
+  You currently have {{currentSelectItems.length}} items selected
 </div>
-
 <div class="selected-items">
   <ul>
-    <li *ngFor="let item of items" class="item">
+    <li *ngFor="let item of currentSelectItems" class="item">
       <div>
         {{item.title}}
         <span class="badge">{{item.id}}</span>
       </div>
-      <button class="delete" title="delete item" (click)="delete(item)">x</button>
+      <button class="delete" title="delete item" (click)="deleteSelectItems(item)">x</button>
     </li>
   </ul>
 </div>

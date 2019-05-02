@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
-import { SelectItemService } from '../select-item.service';
+import {Component, Input, OnInit} from '@angular/core';
 
 import { Item } from '../item';
+import {SelectItemService} from '../select-item.service';
 
 @Component({
   selector: 'app-select-items',
@@ -10,22 +9,24 @@ import { Item } from '../item';
   styleUrls: ['./select-items.component.scss']
 })
 export class SelectItemsComponent implements OnInit {
+ // @Input() items: Item[];
+  private currentSelectItems: Item[] = [];
 
-  items: Item[];
-
-  constructor(private selectItemService: SelectItemService) { }
+  constructor(private selectItemService: SelectItemService) {}
 
   ngOnInit() {
-    this.getItems();
+    // this.selectedItems$ = this.selectItemService.getItems().pipe(
+    //   map(items => items.filter(item => item.selected)),
+    // );
+    this.getSelectedItems();
   }
 
-  getItems(): void {
+  getSelectedItems(): void {
     this.selectItemService.getSelectedItems()
-      .subscribe(items => this.items = items);
+      .subscribe(items => this.currentSelectItems = items);
   }
 
-  delete(item) {
-    this.items = this.items.filter(h => h !== item);
-    this.selectItemService.delete(item);
+  deleteSelectItems(item) {
+    this.selectItemService.deleteSelectItems(item);
   }
 }

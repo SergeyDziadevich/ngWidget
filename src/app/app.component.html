@@ -1,16 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
 <div class="container">
   <h1>
  <!--   {{ title }} -->
   </h1>
 
-  <app-select-items></app-select-items>
+  <app-select-items ></app-select-items> <!-- [items]="selectedItems" -->
 
   <button class="btn btn-change-selection" (click)="showSelection()">Change my selection</button>
 
   <div *ngIf="visibleSelection">
-    <app-selection (onClose)="onClose($event)"></app-selection>
+    <app-selection
+      (closeDialog)="closeDialog()"
+      (selectResultItems)="selectResultItems($event)"
+      [items]="items$ | async"
+    >
+    </app-selection>
   </div>
 
 </div>
