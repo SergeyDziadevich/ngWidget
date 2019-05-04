@@ -9,7 +9,7 @@ import {SelectItemService} from '../select-item.service';
   styleUrls: ['./select-items.component.scss']
 })
 export class SelectItemsComponent implements OnInit {
- // @Input() items: Item[];
+  @Input() items: Item[];
   private currentSelectItems: Item[] = [];
 
   constructor(private selectItemService: SelectItemService) {}
@@ -26,7 +26,8 @@ export class SelectItemsComponent implements OnInit {
       .subscribe(items => this.currentSelectItems = items);
   }
 
-  deleteSelectItems(item) {
-    this.selectItemService.deleteSelectItems(item);
+  onDeleteItem(item) {
+    this.selectItemService.deleteItem(item);
+    this.getSelectedItems();
   }
 }

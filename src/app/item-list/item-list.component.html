@@ -1,17 +1,9 @@
 <div class="selected-items">
   <ul>
-    <!--
-    <li *ngFor="let item of currentSelectItems" class="item">
-      <div>
-        {{item.title}}
-        <span class="badge">{{item.id}}</span>
-      </div>
-      <button class="delete" title="delete item" (click)="deleteSelectItems(item)">x</button>
-    </li>
-    -->
     <app-item
       *ngFor="let item of items"
       [item]="item"
+      (deleteItem)="onDeleteItem($event)"
     >
     </app-item>
   </ul>

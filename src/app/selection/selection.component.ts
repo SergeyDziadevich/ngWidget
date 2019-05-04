@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 
 import { Item } from '../item';
-import { SelectItemService } from '../select-item.service';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-selection',
@@ -20,12 +18,9 @@ export class SelectionComponent implements OnInit, OnDestroy {
 
  // private itemsSub: Subscription;
 
-  constructor(private selectItemService: SelectItemService) {}
+  constructor() {}
 
   ngOnInit() {
-    // this.getItems();
-    // this.currentSelectItems = this.items.filter(h => h.selected === true);
-    // this.currentSelectItems = this.startSelectItems.slice();
     this.currentSelectItems = this.items.filter(h => h.selected === true).slice();
   }
 
@@ -34,13 +29,10 @@ export class SelectionComponent implements OnInit, OnDestroy {
   //     .subscribe(items => this.items = items);
   // }
 
-  delete(item) {
+  onDeleteItem(item) {
+   // this.selectItemService.deleteItem(item);
     this.currentSelectItems = this.currentSelectItems.filter(h => h !== item);
     this.items[item.id].selected = false;
-
-    console.log(this.items);
-
-    this.selectItemService.delete(item);
   }
 
   dialogClose() {
@@ -57,23 +49,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
   }
 
   saveSelectItem() {
-   // console.log(this.currentSelectItems);
-
     this.selectResultItems.emit(this.currentSelectItems);
-
-    //  this.closeDialog.emit();
-
-    // const selected = this.items.filter(c => c.selected);
-    //
-    // this.selectItemService.selectedItems.length = 0;
-    //
-    // selected.map((item) => {
-    //   this.selectItemService.selectedItems.push(item);
-    // });
-   //  this.selectItemService.selectedItems = Array.from(this.currentSelectItems);
-   //  this.selectItemService.selectedItems = this.currentSelectItems.slice();
-
-
   }
 
   cancel() {
@@ -83,13 +59,6 @@ export class SelectionComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
    // this.itemsSub.unsubscribe();
   }
-
-  // getSelectedItem() {
-  //   const selected = this.items.filter(c => c.selected);
-  //   console.log(selected);
-  //
-  //   this.onClose.emit(false);
-  // }
 }
 
 

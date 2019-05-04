@@ -42,6 +42,7 @@
 
   <app-item-list
     [items]="currentSelectItems"
+    (deleteItem)="onDeleteItem($event)"
   ></app-item-list>
 
   <!--

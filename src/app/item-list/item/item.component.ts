@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Item} from '../../item';
 
 @Component({
@@ -6,13 +6,13 @@ import {Item} from '../../item';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent{
 
   @Input() item: Item;
+  @Output() deleteItem: EventEmitter<Item> = new EventEmitter<Item>();
 
-  constructor() { }
-
-  ngOnInit() {
+  delete(item): void {
+    // console.log(item);
+    this.deleteItem.emit(item);
   }
-
 }

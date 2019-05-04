@@ -4,10 +4,12 @@
 
 <div class="count-selected-items">
   You currently have {{currentSelectItems.length}} items selected
+  {{selectItemService.selectedItems.length}}
 </div>
 
 <app-item-list
   [items]="currentSelectItems"
+  (deleteItem)="onDeleteItem($event)"
 ></app-item-list>
 <!--
 <div class="selected-items">
@@ -15,7 +17,7 @@
     <li *ngFor="let item of currentSelectItems" class="item">
       <div>
         {{item.title}}
-        <span class="badge">{{item.id}}</span>
+        <span class="badge">{{item.id}}</span>====
       </div>
       <button class="delete" title="delete item" (click)="deleteSelectItems(item)">x</button>
     </li>
