@@ -7,29 +7,32 @@
   <div class="filter-item">
     <div class="search">
       <label>Search</label>
-      <input type="text">
+      <input type="text" #keywords (keyup)="0" >
     </div>
     <div class="filter">
       <label>Filter</label>
-      <select>
-        <option>without filter</option>
-        <option>Number > 10</option>
-        <option>Number > 100</option>
-        <option>Number > 200</option>
+      <select #filter (change)="0">
+        <option value="0">Without filter</option>
+        <option value="1">Number > 10</option>
+        <option value="2">Number > 100</option>
+        <option value="3">Number > 200</option>
       </select>
     </div>
   </div>
 
   <div class="list-items">
     <form #f="ngForm">
-      <div *ngFor="let item of items">
+      <div *ngFor="let item of items | search: keywords.value | filter: filter.value">
         <label>
           <input type="checkbox"
             [ngModelOptions]="{standalone: true}"
             [(ngModel)]="item.selected"
             value="{{item.id}}"
             (change)="onCheck($event)">
-          {{item.title}} {{item.id}}
+            {{item.title}}
+            <!--
+            {{item.id}}
+            -->
         </label>
       </div>
 

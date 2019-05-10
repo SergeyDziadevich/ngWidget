@@ -7,6 +7,8 @@ import { SelectionComponent } from './selection/selection.component';
 import {FormsModule} from '@angular/forms';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item-list/item/item.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SearchPipe } from './pipe/search.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ItemComponent } from './item-list/item/item.component';
     SelectItemsComponent,
     SelectionComponent,
     ItemListComponent,
-    ItemComponent
+    ItemComponent,
+    FilterPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule, FormsModule

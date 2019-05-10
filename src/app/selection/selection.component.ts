@@ -41,7 +41,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
 
   onCheck(e) {
     if (e.target.checked) {
-      this.currentSelectItems.push({ id: +e.target.value, title: 'Item', selected: true });
+      this.currentSelectItems.push({ id: +e.target.value, title: `Item ${e.target.value}`, selected: true });
     } else {
       const ind = this.currentSelectItems.findIndex(value => +value.id === +e.target.value);
       this.currentSelectItems.splice(ind, 1);
@@ -50,6 +50,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
 
   saveSelectItem() {
     this.selectResultItems.emit(this.currentSelectItems);
+    this.closeDialog.emit();
   }
 
   cancel() {
