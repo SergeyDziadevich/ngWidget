@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   selectedItems;
   items$: Observable<Item[]>;
 
-  private visibleSelection = true;
+  public visibleSelection = true;
 
   constructor(private selectItemService: SelectItemService) {}
 
