@@ -28,7 +28,9 @@
             [ngModelOptions]="{standalone: true}"
             [(ngModel)]="item.selected"
             value="{{item.id}}"
-            (change)="onCheck($event)">
+            (change)="onCheck($event)"
+             [disabled]="currentSelectItems.length >= maxSelect"
+          >
             {{item.title}}
             <!--
             {{item.id}}
