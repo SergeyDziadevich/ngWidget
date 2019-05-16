@@ -1,4 +1,11 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 
 import { Item } from '../item';
 
@@ -10,10 +17,10 @@ import { Item } from '../item';
 export class SelectionComponent implements OnInit, OnDestroy {
 
   @Input() items: Item[];
-  // @Input() startSelectItems: Item[];
   @Output() closeDialog = new EventEmitter<boolean>();
   @Output() selectResultItems = new EventEmitter<Item[]>();
 
+  maxSelect = 3;
   public currentSelectItems: Item[] = [];
 
  // private itemsSub: Subscription;
