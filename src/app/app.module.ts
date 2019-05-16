@@ -9,7 +9,6 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item-list/item/item.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SearchPipe } from './pipe/search.pipe';
-import { ItemselPipe } from './pipe/itemsel.pipe';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { ItemselPipe } from './pipe/itemsel.pipe';
     ItemListComponent,
     ItemComponent,
     FilterPipe,
-    SearchPipe,
-    ItemselPipe
+    SearchPipe
   ],
   imports: [
     BrowserModule, FormsModule
