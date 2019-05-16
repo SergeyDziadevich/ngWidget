@@ -1,4 +1,4 @@
-import { Item } from './item';
+import { Item } from './entites/item';
 
 export const ITEMS: Item[] = [
   { id: 0, title: 'Item 0', selected: false },

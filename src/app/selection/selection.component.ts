@@ -1,43 +1,29 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { Item } from '../item';
+import { Item } from '../entites/item';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-selection',
   templateUrl: './selection.component.html',
   styleUrls: ['./selection.component.scss']
 })
-export class SelectionComponent implements OnInit, OnDestroy {
+export class SelectionComponent implements OnInit {
 
   @Input() items: Item[];
   @Output() closeDialog = new EventEmitter<boolean>();
   @Output() selectResultItems = new EventEmitter<Item[]>();
 
-  maxSelect = 3;
+  private maxSelect = 3;
   public currentSelectItems: Item[] = [];
-
- // private itemsSub: Subscription;
 
   constructor() {}
 
   ngOnInit() {
-    this.currentSelectItems = this.items.filter(h => h.selected === true).slice();
+    this.currentSelectItems = this.items.filter(h => h.selected);
   }
 
-  // getItems(): void {
-  //   this.itemsSub = this.selectItemService.getItems()
-  //     .subscribe(items => this.items = items);
-  // }
-
   onDeleteItem(item) {
-   // this.selectItemService.deleteItem(item);
     this.currentSelectItems = this.currentSelectItems.filter(h => h !== item);
     this.items[item.id].selected = false;
   }
@@ -48,7 +34,8 @@ export class SelectionComponent implements OnInit, OnDestroy {
 
   onCheck(e) {
     if (e.target.checked) {
-      this.currentSelectItems.push({ id: +e.target.value, title: `Item ${e.target.value}`, selected: true });
+      const item = _.find(this.items, { id: +e.target.value });
+      this.currentSelectItems.push(item);
     } else {
       const ind = this.currentSelectItems.findIndex(value => +value.id === +e.target.value);
       this.currentSelectItems.splice(ind, 1);
@@ -62,10 +49,6 @@ export class SelectionComponent implements OnInit, OnDestroy {
 
   cancel() {
     this.closeDialog.emit();
-  }
-
-  ngOnDestroy(): void {
-   // this.itemsSub.unsubscribe();
   }
 }
 

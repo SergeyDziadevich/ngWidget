@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SelectItemService} from './select-item.service';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {Item} from './item';
+import {Item} from './entites/item';
 
 @Component({
   selector: 'app-root',
