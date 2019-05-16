@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {Observable, of} from 'rxjs';
 
-import {Item} from './item';
+import {Item} from './entites/item';
 import {ITEMS} from './mock-items';
 import {map} from 'rxjs/operators';
 

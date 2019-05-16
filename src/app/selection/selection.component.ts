@@ -7,7 +7,8 @@ import {
   Output
 } from '@angular/core';
 
-import { Item } from '../item';
+import { Item } from '../entites/item';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-selection',
@@ -28,7 +29,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    this.currentSelectItems = this.items.filter(h => h.selected === true).slice();
+    this.currentSelectItems = this.items.filter(h => h.selected);
   }
 
   // getItems(): void {
@@ -48,7 +49,8 @@ export class SelectionComponent implements OnInit, OnDestroy {
 
   onCheck(e) {
     if (e.target.checked) {
-      this.currentSelectItems.push({ id: +e.target.value, title: `Item ${e.target.value}`, selected: true });
+      const item = _.find(this.items, { id: +e.target.value });
+      this.currentSelectItems.push(item);
     } else {
       const ind = this.currentSelectItems.findIndex(value => +value.id === +e.target.value);
       this.currentSelectItems.splice(ind, 1);

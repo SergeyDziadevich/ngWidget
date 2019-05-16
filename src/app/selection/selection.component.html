@@ -27,7 +27,7 @@
           <input type="checkbox"
             [ngModelOptions]="{standalone: true}"
             [(ngModel)]="item.selected"
-            value="{{item.id}}"
+            [value]="item.id"
             (change)="onCheck($event)"
              [disabled]="currentSelectItems.length >= maxSelect"
           >
