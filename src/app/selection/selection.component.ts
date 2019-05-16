@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Item } from '../entites/item';
 import * as _ from 'lodash';
@@ -15,16 +8,14 @@ import * as _ from 'lodash';
   templateUrl: './selection.component.html',
   styleUrls: ['./selection.component.scss']
 })
-export class SelectionComponent implements OnInit, OnDestroy {
+export class SelectionComponent implements OnInit {
 
   @Input() items: Item[];
   @Output() closeDialog = new EventEmitter<boolean>();
   @Output() selectResultItems = new EventEmitter<Item[]>();
 
-  maxSelect = 3;
+  private maxSelect = 3;
   public currentSelectItems: Item[] = [];
-
- // private itemsSub: Subscription;
 
   constructor() {}
 
@@ -32,13 +23,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
     this.currentSelectItems = this.items.filter(h => h.selected);
   }
 
-  // getItems(): void {
-  //   this.itemsSub = this.selectItemService.getItems()
-  //     .subscribe(items => this.items = items);
-  // }
-
   onDeleteItem(item) {
-   // this.selectItemService.deleteItem(item);
     this.currentSelectItems = this.currentSelectItems.filter(h => h !== item);
     this.items[item.id].selected = false;
   }
@@ -64,10 +49,6 @@ export class SelectionComponent implements OnInit, OnDestroy {
 
   cancel() {
     this.closeDialog.emit();
-  }
-
-  ngOnDestroy(): void {
-   // this.itemsSub.unsubscribe();
   }
 }
 
