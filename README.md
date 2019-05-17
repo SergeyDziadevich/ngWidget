@@ -1,6 +1,7 @@
-# Widget
+# Items selection widget with search and filter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+Demo: <a href="https://dweb.by/ng-widget/">https://dweb.by/ng-widget/</a>
+
 
 ## Development server
 
