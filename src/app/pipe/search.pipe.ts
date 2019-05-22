@@ -1,22 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Item} from '../item';
+import {Item} from '../entites/item';
 
 @Pipe({
   name: 'search'
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
+  transform(value: Item[], searchValue: string): Item[] {
 
-    const argsArr = args.split('');
-    console.log(argsArr);
+    console.log(searchValue);
 
-    if (!args || args.length === 0) {
+    if (!searchValue || searchValue.length === 0) {
       return value;
     }
 
     return value.filter((item: Item) =>
-      argsArr.every((arg: string) => item.title.includes(arg))
+      item.title.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
     );
   }
 }
